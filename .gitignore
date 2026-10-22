@@ -1,0 +1,15 @@
+node_modules/
+server/data/
+.DS_Store
+.build/
+.swiftpm/
+*.xcodeproj/xcuserdata/
+DerivedData/
+android/.gradle/
+android/**/build/
+android/local.properties
+android/.idea/
+*.iml
+ios/Example/build/
+android/sample/build/
+.env

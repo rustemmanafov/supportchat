@@ -1,0 +1,32 @@
+name: SupportChatExample
+options:
+  bundleIdPrefix: io.supportchat
+  deploymentTarget:
+    iOS: "15.0"
+packages:
+  SupportChat:
+    path: ../..
+targets:
+  SupportChatExample:
+    type: application
+    platform: iOS
+    sources: [SupportChatExample]
+    dependencies:
+      - package: SupportChat
+    info:
+      path: SupportChatExample/Info.plist
+      properties:
+        CFBundleDisplayName: SupportChat Demo
+        UILaunchScreen: {}
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
+        # The chat's file picker can offer the camera; iOS requires this text.
+        NSCameraUsageDescription: Take a photo to send in the support chat.
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.supportchat.example
+        GENERATE_INFOPLIST_FILE: NO
+        CODE_SIGNING_ALLOWED: NO
+        SWIFT_VERSION: "5.0"

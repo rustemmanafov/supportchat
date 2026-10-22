@@ -1,0 +1,5 @@
+{
+  "Simulator Target Bundle": "io.supportchat.example",
+  "aps": { "alert": { "title": "Leyla", "body": "Sifarişiniz yoldadır 🚚" }, "sound": "default", "badge": 1 },
+  "supportchat": "1"
+}

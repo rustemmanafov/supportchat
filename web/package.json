@@ -1,0 +1,14 @@
+{
+  "name": "@supportchat/web",
+  "version": "1.0.0",
+  "description": "SupportChat live chat for websites and web apps (React, Vue, Angular, plain HTML).",
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "exports": {
+    ".": { "types": "./index.d.ts", "default": "./index.js" }
+  },
+  "files": ["index.js", "index.d.ts", "sdk.d.ts"],
+  "sideEffects": false
+}
