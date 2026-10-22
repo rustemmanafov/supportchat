@@ -6,7 +6,7 @@ plugins {
 
 // JitPack passes its own coordinates (com.github.<owner>:<repo>:<tag>) through env vars.
 group = System.getenv("GROUP") ?: "io.supportchat"
-version = System.getenv("VERSION") ?: "1.0.0"
+version = System.getenv("VERSION") ?: "1.0.1"
 
 android {
     namespace = "io.supportchat.sdk"
@@ -15,7 +15,7 @@ android {
     defaultConfig {
         minSdk = 23
         consumerProguardFiles("consumer-rules.pro")
-        buildConfigField("String", "SDK_VERSION", "\"1.0.0\"")
+        buildConfigField("String", "SDK_VERSION", "\"1.0.1\"")
     }
 
     buildFeatures { buildConfig = true }

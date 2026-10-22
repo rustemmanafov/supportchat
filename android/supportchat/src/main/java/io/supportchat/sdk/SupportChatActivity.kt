@@ -216,7 +216,9 @@ class SupportChatActivity : Activity() {
             uri.path.orEmpty().contains("/widget/")
     }
 
+    /** Only web, mail and phone links leave the chat; other schemes (deep links into other apps) are ignored. */
     private fun openExternal(uri: Uri) {
+        if (uri.scheme?.lowercase() !in setOf("http", "https", "mailto", "tel")) return
         try {
             startActivity(Intent(Intent.ACTION_VIEW, uri).addCategory(Intent.CATEGORY_BROWSABLE))
         } catch (_: ActivityNotFoundException) {

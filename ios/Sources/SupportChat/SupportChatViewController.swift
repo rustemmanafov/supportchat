@@ -169,15 +169,19 @@ final class SupportChatChatViewController: UIViewController {
         }
     }
 
+    /// Only web, mail and phone links leave the chat; other schemes (other apps' deep links) are ignored.
     private func open(_ url: URL) {
-        if ["http", "https"].contains(url.scheme?.lowercased()) {
+        switch url.scheme?.lowercased() {
+        case "http", "https":
             present(SFSafariViewController(url: url), animated: true)
-        } else {
+        case "mailto", "tel":
             UIApplication.shared.open(url)
+        default:
+            break
         }
     }
 
-    private func isWidgetURL(_ url: URL?) -> Bool {
+    fileprivate func isWidgetURL(_ url: URL?) -> Bool {
         guard let url, let base = SupportChat.configuration?.serverURL else { return false }
         return url.scheme == base.scheme && url.host == base.host && url.port == base.port
             && url.path.contains("/widget/")
@@ -189,7 +193,8 @@ final class SupportChatChatViewController: UIViewController {
 extension SupportChatChatViewController: WKNavigationDelegate, WKUIDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction) async -> WKNavigationActionPolicy {
         let url = navigationAction.request.url
-        if navigationAction.targetFrame?.isMainFrame == false || isWidgetURL(url) || url?.scheme == "about" {
+        // Every frame stays on the widget; anything else is opened outside (or ignored).
+        if isWidgetURL(url) || url?.scheme == "about" {
             return .allow
         }
         // Anything else (links, redirects) leaves the chat and opens outside.
@@ -240,6 +245,8 @@ private final class WeakMessageHandler: NSObject, WKScriptMessageHandler {
     }
 
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        // Only the widget page itself may talk to the SDK, never an embedded frame.
+        guard message.frameInfo.isMainFrame else { return }
         MainActor.assumeIsolated { target?.handle(message.body) }
     }
 }

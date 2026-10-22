@@ -24,7 +24,7 @@ SupportChat.present()                      // or SupportChatView() in SwiftUI
 dependencyResolutionManagement { repositories { maven("https://jitpack.io") } }
 
 // app/build.gradle.kts
-dependencies { implementation("com.github.rustemmanafov:supportchat:1.0.0") }
+dependencies { implementation("com.github.rustemmanafov:supportchat:1.0.1") }
 ```
 
 ```kotlin

@@ -18,7 +18,7 @@ Dəstək komandanız üçün Inbox: `https://chat.example.com/inbox/` (email və
 
 ## 1. iOS (Swift, iOS 15+)
 
-**Əlavə edin:** Xcode → File → Add Package Dependencies → `https://github.com/rustemmanafov/supportchat` → versiya `1.0.0` → `SupportChat`.
+**Əlavə edin:** Xcode → File → Add Package Dependencies → `https://github.com/rustemmanafov/supportchat` → versiya `1.0.1` → `SupportChat`.
 
 ```swift
 import SupportChat
@@ -86,7 +86,7 @@ func userNotificationCenter(_ c: UNUserNotificationCenter, didReceive r: UNNotif
 dependencyResolutionManagement { repositories { maven("https://jitpack.io") } }
 
 // app/build.gradle.kts
-dependencies { implementation("com.github.rustemmanafov:supportchat:1.0.0") }
+dependencies { implementation("com.github.rustemmanafov:supportchat:1.0.1") }
 ```
 
 SDK-nın AndroidX və ya başqa kitabxana asılılığı yoxdur, ona görə tətbiqinizdəki heç nə ilə toqquşmur.

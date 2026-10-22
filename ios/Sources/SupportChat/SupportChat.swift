@@ -29,7 +29,7 @@ public extension SupportChatDelegate {
 /// ```
 @MainActor
 public enum SupportChat {
-    nonisolated public static let version = "1.0.0"
+    nonisolated public static let version = "1.0.1"
 
     /// Posted on the main thread whenever the unread count changes. `userInfo["count"]` is an `Int`.
     public static let unreadCountDidChangeNotification = Notification.Name("SupportChatUnreadCountDidChange")
